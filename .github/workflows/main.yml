@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Unzip ShadowMesh v3
+      - name: Unzip ShadowMesh-v3 (1)
         run: |
           rm -rf build_src
           for f in *.zip; do
