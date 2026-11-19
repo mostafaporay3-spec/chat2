@@ -12,7 +12,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Unzip ShadowMesh v3
-        run: unzip -o ShadowMesh-v3.zip -d build_src
+        run: |
+          rm -rf build_src
+          for f in *.zip; do
+            unzip -o "$f" -d build_src
+            break
+          done
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
