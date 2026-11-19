@@ -11,13 +11,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Unzip ShadowMesh-v3 (1)
+      - name: Unzip and patch ShadowMesh v3
         run: |
           rm -rf build_src
           for f in *.zip; do
             unzip -o "$f" -d build_src
             break
           done
+          sed -i 's/Prefs.getNickname(this)/Prefs.getNickname(this@MainActivity)/g' build_src/app/src/main/java/com/shadowmesh/app/MainActivity.kt
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
